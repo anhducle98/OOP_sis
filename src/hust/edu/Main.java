@@ -1,6 +1,7 @@
 package hust.edu;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -12,6 +13,11 @@ public class Main {
         printStudentData("20164844");
         System.out.println();
         printCourseData("IT3100");
+
+        System.out.println("gv2's classes: " + database.getClassListFromTeacherId("gv2"));
+        System.out.println("20164844's classes: " + database.getClassListFromStudentId("20164844"));
+        System.out.println("gv6's project students: " + database.getStudentsMentoredByTeacher("gv6"));
+        System.out.println("IT3100's teachers: " + database.getTeachersFromCourseId("IT3100"));
     }
 
     private static void initCourses() {
@@ -77,6 +83,15 @@ public class Main {
         }
     }
 
+    private static void initProjects() {
+        database.insertCourse(new Project("IT3910", "Project I", 2));
+        database.insertClass(new Class("103974", database.getCourses().get("IT3910"), database.getTeachers().get("gv6")));
+    }
+
+    private static void initProjectEnrollments() {
+        database.insertEnrollment(new Enrollment(database.getStudents().get("20164844"), database.getClasses().get("103974")));
+    }
+
     private static void initialize() {
         initCourses();
         initTeachers();
@@ -85,6 +100,8 @@ public class Main {
         initSessions();
         initStudents();
         initEnrollments();
+        initProjects();
+        initProjectEnrollments();
     }
 
     private static void printStudentData(String studentId) {

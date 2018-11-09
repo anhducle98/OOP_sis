@@ -98,4 +98,47 @@ public class Database {
             System.out.format("%s %s - %s\tRoom:%s\tClassId:%s\tCourseId:%s\t%s - Teacher:%s\n", day, startHour, endHour, session.getRoom().getId(), whichClass.getId(), whichClass.getCourse().getId(), whichClass.getCourse().getName(), whichClass.getTeacher().getName());
         }
     }
+
+    public List<Class> getClassListFromTeacherId(String teacherId) {
+        ArrayList<Class> res = new ArrayList<>();
+        for (Class whichClass : classes.values()) {
+            if (whichClass.getTeacher().getId().equals(teacherId)) {
+                res.add(whichClass);
+            }
+        }
+        return res;
+    }
+
+    public List<Class> getClassListFromStudentId(String studentId) {
+        ArrayList<Class> res = new ArrayList<>();
+        for (Enrollment enrollment : enrollments.values()) {
+            if (enrollment.getStudent().getId().equals(studentId) &&
+                    !enrollment.getWhichClass().getCourse().isProject()) {
+                res.add(enrollment.getWhichClass());
+            }
+        }
+        return res;
+    }
+
+    public List<Student> getStudentsMentoredByTeacher(String teacherId) {
+        ArrayList<Student> res = new ArrayList<>();
+        for (Enrollment enrollment : enrollments.values()) {
+            if (enrollment.getWhichClass().getCourse().isProject() &&
+                    enrollment.getWhichClass().getTeacher().getId().equals(teacherId)) {
+                res.add(enrollment.getStudent());
+            }
+        }
+        return res;
+    }
+
+    public List<Teacher> getTeachersFromCourseId(String courseId) {
+        ArrayList<Teacher> res = new ArrayList<>();
+        for (Class whichClass : classes.values()) {
+            if (whichClass.getCourse().getId().equals(courseId)) {
+                res.add(whichClass.getTeacher());
+            }
+        }
+        return res;
+    }
+
 }

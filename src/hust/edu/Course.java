@@ -10,6 +10,15 @@ public class Course extends HustObject {
         this.setCredit(credit);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public boolean isProject() {
+        return false;
+    }
+
     public String getName() {
         return name;
     }

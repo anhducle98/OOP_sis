@@ -8,6 +8,11 @@ public class Teacher extends Person {
         this.setDepartment(department);
     }
 
+    @Override
+    public String toString() {
+        return "(teacher#" + this.getId() + ":" + this.getName() + ")";
+    }
+
     public String getDepartment() {
         return department;
     }

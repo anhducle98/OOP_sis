@@ -8,6 +8,11 @@ public class Student extends Person {
         this.setMajor(major);
     }
 
+    @Override
+    public String toString() {
+        return "(student#" + this.getId() + ":" + this.getName() + ")";
+    }
+
     public String getMajor() {
         return major;
     }

@@ -10,6 +10,11 @@ public class Class extends HustObject {
         this.setTeacher(teacher);
     }
 
+    @Override
+    public String toString() {
+        return "(Class#" + this.getId() + ":" + course + ")";
+    }
+
     public Course getCourse() {
         return course;
     }
