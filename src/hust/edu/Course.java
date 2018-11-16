@@ -12,7 +12,7 @@ public class Course extends HustObject {
 
     @Override
     public String toString() {
-        return name;
+        return "(Course #" + this.getId() + ": " + name + ")";
     }
 
     public boolean isProject() {

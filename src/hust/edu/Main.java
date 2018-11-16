@@ -18,6 +18,9 @@ public class Main {
         System.out.println("20164844's classes: " + database.getClassListFromStudentId("20164844"));
         System.out.println("gv6's project students: " + database.getStudentsMentoredByTeacher("gv6"));
         System.out.println("IT3100's teachers: " + database.getTeachersFromCourseId("IT3100"));
+
+        Interface cmd = new Interface(database);
+        cmd.menu();
     }
 
     private static void initCourses() {

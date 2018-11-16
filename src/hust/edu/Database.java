@@ -141,4 +141,14 @@ public class Database {
         return res;
     }
 
+    public List<Student> getStudentsFromClassId(String classId) {
+        ArrayList<Student> res = new ArrayList<>();
+        for (Enrollment enrollment : enrollments.values()) {
+            if (enrollment.getWhichClass().getId().equals(classId)) {
+                res.add(enrollment.getStudent());
+            }
+        }
+        return res;
+    }
+
 }
